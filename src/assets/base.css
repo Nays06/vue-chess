@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #42b983;
+  --secondary-color: #2c3e50;
+  --light-square-color: #f0d9b5;
+  --dark-square-color: #b58863;
+}
+
+button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3aa876;
+}
+
+h1, h2, h3 {
+  color: var(--secondary-color);
+}
