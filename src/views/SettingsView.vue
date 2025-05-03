@@ -1,4 +1,3 @@
-<!-- src/views/SettingsView.vue -->
 <template>
     <div class="settings-container">
         <h1>Настройки</h1>
@@ -42,43 +41,16 @@
                     :class="{ 'selected-style': pieceStyle === style }" @click="selectPieceStyle(style)">
                     <h4>{{ formatStyleName(style) }}</h4>
                     <div class="piece-preview">
-                        <img :src="`src/assets/img/chessesPacks/${style}/wK.png`" alt="Белый король" class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/wQ.png`" alt="Белый ферзь" class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/bK.png`" alt="Черный король" class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/bQ.png`" alt="Черный ферзь" class="piece-image" />
+                        <img :src="`src/assets/img/chessesPacks/${style}/wK.png`" alt="Белый король"
+                            class="piece-image" />
+                        <img :src="`src/assets/img/chessesPacks/${style}/wQ.png`" alt="Белый ферзь"
+                            class="piece-image" />
+                        <img :src="`src/assets/img/chessesPacks/${style}/bK.png`" alt="Черный король"
+                            class="piece-image" />
+                        <img :src="`src/assets/img/chessesPacks/${style}/bQ.png`" alt="Черный ферзь"
+                            class="piece-image" />
                     </div>
                 </div>
-            </div>
-
-            <div class="settings-info">
-                <h3>Использование внешних наборов фигур</h3>
-                <p>
-                    Если у вас есть собственный набор PNG изображений шахматных фигур,
-                    вы можете использовать их, поместив в папку <code>/public/pieces/ваш-стиль/</code>.
-                </p>
-                <div class="info-box">
-                    <h4>Структура папок для пользовательских стилей:</h4>
-                    <pre>
-public/
-└── pieces/
-    └── ваш-стиль/
-        ├── wK.png (белый король)
-        ├── wQ.png (белый ферзь)
-        ├── wR.png (белая ладья)
-        ├── wB.png (белый слон)
-        ├── wN.png (белый конь)
-        ├── wP.png (белая пешка)
-        ├── bK.png (черный король)
-        ├── bQ.png (черный ферзь)
-        ├── bR.png (черная ладья)
-        ├── bB.png (черный слон)
-        ├── bN.png (черный конь)
-        └── bP.png (черная пешка)
-          </pre>
-                </div>
-                <button @click="scanForCustomStyles" class="scan-button">
-                    Сканировать пользовательские стили
-                </button>
             </div>
         </div>
 
@@ -97,32 +69,33 @@ const chessStore = useChessStore();
 const settings = computed(() => chessStore.settings);
 const pieceStyles = computed(() => chessStore.pieceStyles);
 
-// Локальные состояния для настроек
+
 const lightSquareColor = ref(settings.value.lightSquareColor);
 const darkSquareColor = ref(settings.value.darkSquareColor);
 const pieceStyle = ref(settings.value.pieceStyle);
 
-// Вычисляемое свойство для стилей доски
+
 const boardStyle = computed(() => ({
     '--preview-light-square-color': lightSquareColor.value,
     '--preview-dark-square-color': darkSquareColor.value
 }));
 
-// Инициализация настроек при загрузке компонента
+
 onMounted(() => {
     lightSquareColor.value = settings.value.lightSquareColor;
     darkSquareColor.value = settings.value.darkSquareColor;
     pieceStyle.value = settings.value.pieceStyle;
 });
 
-// Выбор стиля фигур
+
 function selectPieceStyle(style) {
     pieceStyle.value = style;
     saveSettings();
 }
 
-// Сохранение настроек
+
 function saveSettings() {
+    localStorage.setItem('KTChessVueJSSettings', JSON.stringify({ lightSquareColor: lightSquareColor.value, darkSquareColor: darkSquareColor.value, pieceStyle: pieceStyle.value }))
     chessStore.updateSettings({
         lightSquareColor: lightSquareColor.value,
         darkSquareColor: darkSquareColor.value,
@@ -130,21 +103,15 @@ function saveSettings() {
     });
 }
 
-// Сброс настроек к значениям по умолчанию
+
 function resetToDefaults() {
     lightSquareColor.value = '#f0d9b5';
     darkSquareColor.value = '#b58863';
-    pieceStyle.value = 'standard';
+    pieceStyle.value = 'adventurer';
     saveSettings();
 }
 
-// Функция для сканирования пользовательских стилей (имитация)
-function scanForCustomStyles() {
-    alert('Для реальной работы этой функции требуется серверная часть. В текущей реализации эта функция только имитируется.');
-    // В реальном приложении здесь был бы запрос на сервер для сканирования директории
-}
 
-// Форматирование имени стиля для отображения
 function formatStyleName(style) {
     return style.charAt(0).toUpperCase() + style.slice(1);
 }
