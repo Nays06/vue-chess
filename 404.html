@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-        sessionStorage.redirect = location.pathname;
+        sessionStorage.redirect = location.pathname + location.search + location.hash;
+        const baseUrl = '/vue-chess/';
+        window.location.replace(baseUrl);
     </script>
-    <meta http-equiv="refresh" content="0;URL='/'">
 </head>
-<body></body>
+<body>
+    <p>Redirecting...</p>
+</body>
 </html>
