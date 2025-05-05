@@ -41,13 +41,13 @@
                     :class="{ 'selected-style': pieceStyle === style }" @click="selectPieceStyle(style)">
                     <h4>{{ formatStyleName(style) }}</h4>
                     <div class="piece-preview">
-                        <img :src="`src/assets/img/chessesPacks/${style}/wK.png`" alt="Белый король"
+                        <img :src="`./img/chessesPacks/${style}/wK.png`" alt="Белый король"
                             class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/wQ.png`" alt="Белый ферзь"
+                        <img :src="`./img/chessesPacks/${style}/wQ.png`" alt="Белый ферзь"
                             class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/bK.png`" alt="Черный король"
+                        <img :src="`./img/chessesPacks/${style}/bK.png`" alt="Черный король"
                             class="piece-image" />
-                        <img :src="`src/assets/img/chessesPacks/${style}/bQ.png`" alt="Черный ферзь"
+                        <img :src="`./img/chessesPacks/${style}/bQ.png`" alt="Черный ферзь"
                             class="piece-image" />
                     </div>
                 </div>
