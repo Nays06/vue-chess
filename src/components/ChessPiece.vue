@@ -40,7 +40,7 @@ const pieceImagePath = computed(() => {
     default: typeCode = '?';
   }
 
-  return `/img/chessesPacks/${props.pieceStyle}/${colorPrefix}${typeCode}.png`;
+  return `./img/chessesPacks/${props.pieceStyle}/${colorPrefix}${typeCode}.png`;
 });
 
 
