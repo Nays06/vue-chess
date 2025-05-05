@@ -11,13 +11,11 @@ export const useChessStore = defineStore("chess", {
     winner: null,
     settings: {
       lightSquareColor:
-        JSON.parse(localStorage.getItem("KTChessVueJSSettings"))
-          .lightSquareColor || "#f0d9b5",
+        JSON.parse(localStorage.getItem("KTChessVueJSSettings"))?.lightSquareColor || "#f0d9b5",
       darkSquareColor:
-        JSON.parse(localStorage.getItem("KTChessVueJSSettings"))
-          .darkSquareColor || "#b58863",
+        JSON.parse(localStorage.getItem("KTChessVueJSSettings"))?.darkSquareColor || "#b58863",
       pieceStyle:
-        JSON.parse(localStorage.getItem("KTChessVueJSSettings")).pieceStyle ||
+        JSON.parse(localStorage.getItem("KTChessVueJSSettings"))?.pieceStyle ||
         "adventurer",
     },
     pieceStyles: [
